@@ -225,5 +225,66 @@ e agrupar em um só, e assim por diante.
 - Fizemos esse exemplo. Se for true, vai aparecer o quadrado com um xis dentro. Se for false, vai
 aparecer o quadrado vazio.
 
+'''
+class Restaurante:
+    restaurantes = []
+    
+    def __init__(self, nome, categoria):
+        self.nome = nome
+        self.categoria = categoria
+        self.ativo = False
+        Restaurante.restaurantes.append(self)
+        
+    def __str__(self):
+        return f'{self.nome} | {self.categoria}'
+
+    def listar_restaurantes():
+        for restaurante in Restaurante.restaurantes:
+            print(f'{restaurante.nome} | {restaurante.categoria} | {restaurante.ativo}')
+    
+    @property
+    def ativo(self):
+        return '☑' if  self.ativo else '☐'
+    
+restaurante_praca = Restaurante('Praça', 'Gourmet')
+restaurante_pizza = Restaurante('Pizza Express', 'Italiana')
+
+Restaurante.listar_restaurantes()
+
+'''
+
+- Ao executar o script desta forma acima, teremos uma mensagem de erro vai dizer que "a propriedade 
+ativo não tem um setter". O que isso significa? Significa que não somos capazes de mudar
+o ativo.
+
+- Um “setter” é um tipo de método em programação orientada a objetos que é usado para controlar
+as alterações a uma variável. É parte do conceito de encapsulamento. Em Python, um setter
+permite que você defina regras para quando uma variável é alterada.
+
+- Por que não somos capazes? Não recebemos o ativo como parâmetro na função __init__(), somente o definimos ele como false.
+
+- Poderíamos mudar o nome do restaurante, por exemplo, com restaurante_praca.ativo igual a true. Contudo, não
+queremos que as pessoas mudem o ativo do restaurante só digitando ali o nome do restaurante. 
+Isso não faz sentido e não seria seguro.
+
+- O que talvez faça mais sentido é termos um método que muda esse estado, igual já havíamos
+feito. Para isso, vamos dizer que ativo é um atributo, mas ele é um atributo privado. 
+Não esperamos que as pessoas alterem o valor dele.
+
+- Para isso, na função __init__(), substituiremos a linha self.ativo por self._ativo. 
+Essa mudança indica que não estamos esperando que as pessoas acessem ele direto. 
+Em vez disso, elas vão usar a propriedade.
+
+- Como colocamos o _ na função __init__(), também precisamos colocar o 
+_ na linha return '⌧' if self.ativo else '☐' da função ativo(), onde de fato modificamos
+esse ativo.
+
+- Então, toda vez que acessarmos esse atributo, também temos que colocar o _.
+
+- É importante mencionar que essa mudança não está exatamente deixando o atributo privado.
+Ele está deixando-o apenas como protegido. É como se fosse uma convenção que utilizamos para
+informar que aquele atributo não deve ser alterado.
+
+- Executando o código no terminal, veremos que apareceu um quadrado vazio para ambos.
 
 
