@@ -1,0 +1,229 @@
+- Classes -
+
+Analise o script abaixo:
+'''
+class Restaurante:
+    nome = ''
+    categoria = ''
+    ativo = False
+
+restaurante_praca = Restaurante()
+restaurante_praca.nome = 'Praça'
+restaurante_praca.categoria = 'Gourmet'
+
+restaurante_pizza = Restaurante()
+
+restaurantes = [restaurante_praca, restaurante_pizza]
+
+print(dir(restaurante_praca))
+'''
+
+OUTPUT:
+'''
+['__class__', '__delattr__', '__dict__', '__dir__', '__doc__', '__eq__', '__format__', '__ge__', '__getattribute__', '__gt__', '__hash__', '__init__', '__init_subclass__', '__le__', '__lt__', '__module__', '__ne__', '__new__', '__reduce__', '__reduce_ex__', '__repr__', '__setattr__', '__sizeof__', '__str__', '__subclasshook__', '__weakref__', 'ativo', 'categoria', 'nome']
+'''
+
+---> Analisando o output, sempre que no valor do objeto possuir __class__ ou qualquer atributo que começe com 'underline', significa que é um método especial,
+que toda classe em python vai ter.
+
+---> Analisando o script, temos a função 'dir()': print(dir(restaurante_praca)), passando o objeto como parâmetro dentro dessa função, ela irá exibir todos as propriedades, atributos e métodos deste objeto conforme output mostrado acima.
+Esta função faz sentido ser utilizado quando se trata de uma classe que não conhecemos para visualizar as propriedades, atributos ou metódos de determinado objeto de uma classe.
+
+-----------------------------------------------------------------
+
+Analise o script abaixo:
+
+'''
+class Restaurante:
+    nome = ''
+    categoria = ''
+    ativo = False
+
+restaurante_praca = Restaurante()
+restaurante_praca.nome = 'Praça'
+restaurante_praca.categoria = 'Gourmet'
+
+restaurante_pizza = Restaurante()
+
+restaurantes = [restaurante_praca, restaurante_pizza]
+
+print(vars(restaurante_praca))
+'''
+
+OUTPUT:
+'''
+{'nome': 'Praça', 'categoria': 'Gourmet'}
+'''
+
+---> Analisando o script e o output, vemos que ao utilizar a função 'vars', conseguimos ver um dicionário desses atributos e métodos.
+
+-----------------------------------------------------------------
+
+Convenções de nomes para variáveis e funções no Python?
+
+Segundo as convenções de nomenclatura do próprio Python Enhancement Proposal 8, algumas preocupações incluem:
+
+Evitar certos nomes
+
+Nunca usar os caracteres 'l', 'O', ou 'I' como nomes de variáveis pois, em algumas fontes, eles são indistinguíveis dos números um e zero.
+
+Pacote e nomes de módulos
+
+Os módulos devem ter nomes pequenos, sendo estes escritos em minúsculo por completo.
+
+Ex: package
+
+Nomes de classes
+
+Os nomes de classes têm a primeira letra de cada palavra maiúscula (CamelCase).
+
+Ex: NomeDeUmaClasse
+
+Nomes de funções e métodos
+
+Nomes de funções e métodos devem estar em letras minúsculas, com palavras separadas por underscores conforme seja útil para a legibilidade.
+
+Ex: nome_de_uma_funcao
+
+Obs: o caso misto (todas as iniciais maiúsculas, com exceção da primeira) é permitido apenas em contextos onde isso já é o estilo predominante, para manter compatibilidade com versões anteriores.
+
+Constantes
+
+Constantes são geralmente definidas em um nível de módulo e escritas em letras maiúsculas com underscores separando as palavras. Exemplos incluem MAX_OVERFLOW e TOTAL.
+
+Nomes de variáveis e parâmetros de funções e métodos
+
+Geralmente seguem a mesma regra das funções, devendo estar em letras minúsculas, com palavras separadas por underscores conforme seja útil para a legibilidade.
+
+Obs: Usar self como primeiro parâmetro de um método.
+
+Ex: nome_de_um_metodo(self):
+
+Identação
+
+A identação deve ser feita usando quatro espaços por nível.
+
+Linhas em branco
+
+Linhas em branco são recomendadas para separar funções e definições de classes (duas linhas), além de definições de métodos (uma linha).
+
+Espaços em branco
+
+O espaço em branco deve ser usado para separar operadores matemáticos, binários, de comparação e de atribuição de outros elementos.
+
+Ex:
+
+if variavel == False:
+    print 2 * 3
+Deve-se evitar o uso de espaços em branco entre parênteses e parâmetros na declaração de uma função, bem como entre uma chamada de função e o primeiro parêntese de sua lista de argumentos.
+
+Ex: funcao(primeiro_parametro, segundo_parametro)
+
+-----------------------------------------------------------------
+
+---> O __init__ é um método especial/método construtor que garante que toda vez que criado uma 
+instância da classe Restaurante() ela inicie obrigatóriamente com os atributos definidos 
+dentro de __init__ que está definido dentro da classe Restaurante. Ele serve para inicializar (ou seja, configurar) o objeto.
+
+conforme abaixo:
+
+'''
+class Restaurante:
+    def __init__(self, nome, categoria):
+        self.nome = nome
+        self.categoria = categoria
+        self.ativo = False
+
+restaurante_praca = Restaurante('Praça', 'Gourmet')
+restaurante_pizza = Restaurante('Pizza Express', 'Italiana')
+
+restaurantes = [restaurante_praca, restaurante_pizza]
+
+print(vars(restaurante_praca))
+print(vars(restaurante_pizza))
+'''
+
+---> O self é uma referência à instância atual da classe e é usado para acessar as variáveis que pertencem à classe,
+ou seja, é possível utilizar o self para acessar o mesmo método do objeto mudando seu estado.
+O self em Python é uma convenção que representa a instância da própria classe. Ele é usado como o primeiro parâmetro 
+em métodos de instância (métodos pertencentes a objetos específicos da classe).
+
+----> O __srt__ é um método especial que pega o objeto e mostra sua estrutura em formato de texto.
+Em outras palavras _str__ é usado para fornecer uma representação de string de uma instância. 
+verifique abaixo:
+
+'''
+class Restaurante:
+    def __init__(self, nome, categoria):
+        self.nome = nome
+        self.categoria = categoria
+        self.ativo = False
+        
+    def __str__(self):
+        return f'{self.nome} | {self.categoria}'
+
+restaurante_praca = Restaurante('Praça', 'Gourmet')
+restaurante_pizza = Restaurante('Pizza Express', 'Italiana')
+
+restaurantes = [restaurante_praca, restaurante_pizza]
+
+print(restaurante_praca)
+print(restaurante_pizza)
+'''
+
+OUTPUT definindo o método __str__ fornece uma representação de string de uma instância/objeto:
+'''
+Praça | Gourmet
+Pizza Express | Italiana
+'''
+
+OUTPUT apenas com o método construtor __init__, mostra apenas o endereço de memória do objeto:
+'''
+<__main__.Restaurante object at 0x7f6034457e80>
+<__main__.Restaurante object at 0x7f6034457e20>
+'''
+
+---> Então com o método espeial __str__ podemos identificar qualquer informação relacionado ao 
+objeto que estamos criando.
+
+-----------------------------------------------------------------
+
+- Vamos partir de um princípio do Python muito importante, que é modificar como um atributo
+é lido. Para isso, abaixo do bloco listar_restaurantes, vamos utilizar um símbolo diferente,
+que é o @, um decorator (decorador) do Python.
+
+- Vamos escrever @property. O que isso vai fazer? Quando escrevemos @property, temos a capacidade
+de pegar um atributo — neste caso, o ativo.
+
+- Sempre que utilizarmos @property, queremos modificar como aquele atributo vai ser lido.
+
+- mostrar o valor false ou true não explica muito bem o que está acontecendo. Então, podemos 
+colocar no interior dessa função um return, por exemplo. Queremos retornar determinada informação.
+
+- À direita do return, vamos adicionar um 'verdadeiro' if self.ativo para mostrarmos algo no
+caso do self.ativo ser verdadeiro. Adicionaremos um else 'false' para retornar algo diferente 
+caso não for verdadeiro.
+
+- Adicionamos true e false. Igual fizemos no curso anterior, só que antes escrevemos ativo e
+desativado.
+
+Vamos colocar um emoji?
+
+https://coolsymbol.com/
+
+Vamos escolher e copiar os ícones abaixo:
+
+- O ícone ⌧ denominado "X in a Rectangle Box", constituído de um quadrado com um xis dentro, para
+utilizarmos se for ativo.
+- O ícone ☐ denominado "Ballot Box", constituído de um quadrado vazio, para utilizarmos se for 
+false.
+
+- Estamos usando emojis para modificar como o atributo que vai ser exibido. No mundo real, no projeto
+real, podemos usar a @property para realizar uma operação matemática ou para recolher diversos valores 
+e agrupar em um só, e assim por diante.
+
+- Fizemos esse exemplo. Se for true, vai aparecer o quadrado com um xis dentro. Se for false, vai
+aparecer o quadrado vazio.
+
+
+
