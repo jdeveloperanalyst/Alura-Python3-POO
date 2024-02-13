@@ -289,4 +289,41 @@ informar que aquele atributo não deve ser alterado.
 
 - Executando o código no terminal, veremos que apareceu um quadrado vazio para ambos.
 
+-----------------------------------------------------------------
+
+- Para manter todas as palavras que temos com iniciais maiúsculas, na função __init__(), 
+podemos usar uma função do Python chamada .title(). Ela será aplicada à esquerda de nome,
+na linha self.nome = nome, que possui o nome do restaurante.
+
+self.nome = nome.title()
+
+- Se quisermos que a categoria seja sempre escrita com todas as letras maiúsculas, podemos 
+usar o método .upper() à esquerda de categoria, na linha self.categoria = categoria.
+
+self.categoria = categoria.upper()
+
+- Portanto, nem sempre precisaremos usar property para todos os valores que temos em nossa
+aplicação.
+
+- Entretanto, é importante que os atributos da classe fiquem visíveis para a classe, e que
+não possamos alterá-los sem controle.
+
+- Isso nos leva a um ponto importante: podemos definir o nome e a categoria também como atributos
+privados da classe.
+
+- Para alterar todas as ocorrências de um atributo ao mesmo tempo, podemos selecionar um deles
+e apertar "F2". Faremos isso com atributo nome.
+
+- Isso nos permite digitar um novo nome e renomear todos os locais em que ele aparece. 
+Nesse caso, adicionaremos um sublinhado antes do nome, transformando-o em _nome.
+
+- Resumindo, a boa prática é definir todos os nossos atributos com um sublinhado antes.
+
+- Precisamos de property para tudo? Não necessariamente. Usamos property quando precisamos
+encapsular informações que serão cruzadas com outras para gerar uma visualização diferente. 
+Caso contrário, podemos aplicar a mudança diretamente nos parâmetros quando instanciamos o objeto.
+
+- No caso do nosso projeto, precisamos de uma validação melhor para o atributo ativo, então
+criamos uma property. Mas no caso do nome e da categoria, não precisamos da property para
+fazer a mudança desses atributos.
 
