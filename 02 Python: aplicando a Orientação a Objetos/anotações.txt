@@ -327,3 +327,120 @@ Caso contrário, podemos aplicar a mudança diretamente nos parâmetros quando i
 criamos uma property. Mas no caso do nome e da categoria, não precisamos da property para
 fazer a mudança desses atributos.
 
+-----------------------------------------------------------------
+
+- Criamos métodos especiais na classe Restaurante: o __init__() e o __str__(). Criamos nossos próprios
+métodos, como listar_restaurantes() e criamos uma property.
+
+- Trabalhando com tipos de método diferentes
+
+- A questão importante é que não precisamos criar nenhuma instância para listarRestaurante. 
+Não precisamos especificar o nome dele nem sua categoria. Bastou adicionar no fim 
+do arquivo o Restaurante com o R maiúsculo indicando que é a classe, junto a .listarRestaurantes.
+
+- É uma boa prática indicar que se trata de um método da classe sempre que temos um método que não
+está referenciado com uma instância, mas sim à classe. Para isso utilizamos o @classmethod — vamos 
+adicioná-lo acima de listar_restaurantes().
+
+- Sempre que temos um @classmethod e estamos utilizando informações referentes a esse método, podemos
+colocar como argumento entre os parênteses do método um cls. Se trata de uma convenção também.
+
+- Por fim, na linha for restaurante in Restaurante.restaurantes, em vez de usar o 
+Restaurante com inicial maiúscula, vamos usar o cls, para indicar que se trata de 
+um método da classe, um @classmethod.
+
+'''
+@classmethod
+def listar_restaurantes(cls):
+    print(f'{'Nome do restaurante'.ljust(25)} | {'Categoria'.ljust(25)} | {'Status'}')
+    for restaurante in cls.restaurantes:
+        print(f'{restaurante._nome.ljust(25)} | {restaurante._categoria.ljust(25)} | {restaurante.ativo}')
+
+'''
+
+- Em métodos de classe, não precisamos da instância de objetos dela. Com a própria
+classe já conseguimos acessar esses métodos.
+
+- O nosso código que já estava funcionando, agora está mais legível e mais próximo do
+que acontece no mundo real de desenvolvimento. Podemos ter métodos da classe, exclusivos
+para a classe, nos quais não precisamos de instâncias de objetos, e também temos métodos
+ especiais ou métodos para alterar um estado de algo na classe.
+
+- Agora nós precisamos garantir de alguma forma que somos capazes de ativar um restaurante.
+
+- E podemos criar outro método exatamente para ativar o estado, ou mudar, no caso, o estado
+do nosso ativo.
+
+- Esse método, diferente do método de listar restaurantes, não é um método para a classe
+restaurante, mas para os objetos. Então ele não é um @classmethod.
+
+- Ele não é um método da classe.
+
+- Vamos criá-lo abaixo da property ativo e chamá-lo de alternar_estado().
+
+- Em seu interior, vamos precisar daquela referência. É possível aproveitar aquela
+mesma lógica que tínhamos feito antes. Ou seja, pegar o self._ativo que estamos 
+pedindo agora, e alternar o estado dele colocando o not, já que ele é um booliano.
+
+- Então seria o self._ativo, que será igual ao not self.ativo.
+
+'''
+def alternar_estado(self)
+    self._ativo = not self._ativo
+
+'''
+
+- Isso é interessante. Existem alguns tipos de métodos dentro de uma classe. Esse método
+alternar_estado, que acabamos de criar, é um método para os objetos.
+
+- Quando executamos, temos o nome do restaurante "Praça", categoria "GOURMET" e o status dele
+é o quadrado com um 'check' dentro, indicando que ele está ativo.
+
+CONSIDERAÇÕES:
+
+- Nesta aula, vimos que uma classe é uma estrutura que encapsula dados e comportamentos
+relacionados. Além disso, os métodos em uma classe podem ser classificados em vários
+tipos com base em sua natureza e propósito.
+
+- Ao criar classes, você pode implementar esses métodos para fornecer funcionalidades
+específicas e controlar o comportamento da instância e da classe.
+
+Veja o exemplo desta classe:
+
+'''
+class Contador:
+    '''
+    Classe que representa um contador.
+    A instância mantém um contador específico, enquanto um contador global é compartilhado por todas as instâncias.
+    '''
+
+    contador_global = 0
+
+    def __init__(self):
+        self.valor = 0
+
+    def __str__(self):
+        return f'Contador: {self.valor}'
+
+    def incrementar(self):
+        self.valor += 1
+
+    @classmethod
+    def zerar_contador_global(cls):
+        cls.contador_global = 0
+        return 'Contador global foi zerado.'
+
+'''
+
+- O método init é o construtor usado para inicializar uma instância da classe.
+    . Isso aí! O método __init__ é conhecido como o construtor da classe em Python.
+      Ele é automaticamente chamado quando uma nova instância da classe é criada e serve
+      para realizar as inicializações necessárias nos atributos da instância. O nome __init__ 
+      é uma abreviação de initialize (inicializar), e sua principal função é garantir que os
+      atributos da instância tenham valores iniciais apropriados.
+
+    . A classe Contador tem um método de instância incrementar que aumenta o valor do contador
+      e um método __str__ para fornecer uma representação em string da instância.
+
+-----------------------------------------------------------------
+
