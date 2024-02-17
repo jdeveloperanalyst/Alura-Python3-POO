@@ -403,7 +403,7 @@ relacionados. Além disso, os métodos em uma classe podem ser classificados em 
 tipos com base em sua natureza e propósito.
 
 - Ao criar classes, você pode implementar esses métodos para fornecer funcionalidades
-específicas e controlar o comportamento da instância e da classe.
+específicas e controla o comportamento da instância e da classe.
 
 Veja o exemplo desta classe:
 
