@@ -24,7 +24,7 @@ class ContaBancaria:
     
     @property
     def saldo_conta(self):
-        return self._titular
+        return self._saldo
     
     @property
     def ativo(self):
@@ -35,8 +35,19 @@ class ContaBancaria:
         return '✅' if  self._ativo else '❌'
 
 # 6. Crie uma classe chamada ClienteBanco com um construtor que aceita 5 atributos. Instancie 3 objetos desta classe e atribua valores aos seus atributos através do método construtor.
+class ClienteBanco:
+    def __init__(self, cpf=0, nome='', idade=0, profissao='', telefone=''):
+        self._cpf = cpf
+        self._nome = nome
+        self._idade = idade
+        self._profissao = profissao
+        self._telefone = telefone
 
 # 7. Crie um método de classe para a conta ClienteBanco.
+    @classmethod
+    def criar_conta(cls, titular, saldo_incial):
+        conta = ContaBancaria(titular, saldo_incial)
+        return conta
 
 #parte da etapa 2 do exercício
 print()
@@ -59,3 +70,13 @@ print()
 conta4 = ContaBancaria('Pedro', 1500.0)
 print(f'O nome do titular da conta 4 é {conta4.nome_titular}.')
 print(conta4)
+
+#parte da etapa 6 do exercício
+cliente1 = ClienteBanco('12345678998', 'João', 31, 'Back End Developer', '11977448855')
+cliente2 = ClienteBanco('32165498778', 'Maria', 25, 'Gerente de Projetos', '11999665544')
+cliente3 = ClienteBanco('78932165445', 'Pedro', 31, 'Arquieteto', '11922447788')
+
+#adicional da etapa 7 do exercício
+print()
+conta_cliente1 = ClienteBanco.criar_conta('Ana', 2000)
+print(f'Conta de {conta_cliente1.nome_titular} criada com saldo inicial de R${conta_cliente1.saldo_conta}')
