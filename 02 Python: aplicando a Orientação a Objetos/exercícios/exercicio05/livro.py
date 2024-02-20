@@ -10,6 +10,11 @@ class Livro:
     
     def emprestar(self):
         self._disponivel = False
+        
+    @staticmethod    
+    def verificar_disponibilidade(ano):
+        livros_disponiveis = [livro for livro in Livro.livros if livro._ano_publicacao == ano and livro._disponivel]
+        return livros_disponiveis
 
 print()        
 livro1 = Livro('O Senhor dos Anéis', 'J. R. R. Tolkien', 1954)
@@ -23,3 +28,4 @@ print(f'Antes de emprestar o livro3: Livro disponível? {livro3._disponivel}')
 livro3.emprestar()
 print(f'Depois de emprestar o livro3: Livro disponível? {livro3._disponivel}')
 
+Livro.livros = [livro1, livro2, livro3]

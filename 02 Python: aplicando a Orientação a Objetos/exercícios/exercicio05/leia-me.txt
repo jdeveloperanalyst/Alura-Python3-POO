@@ -16,3 +16,50 @@
 
 8. Crie um arquivo chamado main.py, importe a classe Livro e, no arquivo main.py, instancie dois objetos da classe Livro e exiba a mensagem formatada utilizando o método str.
 
+
+ANOTAÇÕES
+
+Referente ao trecho abaixo:
+
+    @staticmethod    
+    def verificar_disponibilidade(ano):
+        livros_disponiveis = [livro for livro in Livro.livros if livro._ano_publicacao == ano and livro._disponivel]
+        return livros_disponiveis
+
+Livro.livros = [livro1, livro2, livro3]
+
+Observações:
+
+- Você não está criando um método da classe Livro fora da classe. 
+  O que você está fazendo é definir uma variável de classe Livro.livros fora da classe.
+
+- No código, Livro.livros = [livro1, livro2, livro3] está adicionando uma lista de instâncias da classe Livro à classe Livro. 
+  Esta lista é então usada pelo método estático verificar_disponibilidade para encontrar os livros disponíveis que foram publicados em um determinado ano.
+
+- O método estático verificar_disponibilidade é definido dentro da classe Livro, mas como é um método estático, 
+  ele pode ser chamado diretamente da classe, sem a necessidade de criar uma instância da classe.
+------------------------->>>>>>
+-Para esclarecer melhor:
+    1. Variável de Classe Fora da Classe: No Python, você pode adicionar atributos a um objeto a qualquer momento, 
+    e isso inclui após a criação da classe. Quando você faz Livro.livros = [livro1, livro2, livro3], 
+    você está adicionando um novo atributo livros à classe Livro. Este atributo é acessível a todas as instâncias da classe
+    e também à própria classe.
+
+    2. Chamando um Método Estático: Métodos estáticos em Python podem ser chamados diretamente da classe, sem a necessidade 
+    de criar uma instância da classe. Quando você faz Livro.verificar_disponibilidade(ano), o Python sabe que você está 
+    tentando chamar o método estático verificar_disponibilidade da classe Livro.
+------------------------->>>>>>
+- Quando você chama Livro.verificar_disponibilidade(ano), o Python procura o método verificar_disponibilidade na classe Livro. 
+  Como é um método estático, ele pode ser chamado diretamente na classe, sem a necessidade de uma instância da classe.
+
+- Dentro do método verificar_disponibilidade, você tem a linha:
+
+'''
+livros_disponiveis = [livro for livro in Livro.livros if livro._ano_publicacao == ano and livro._disponivel]
+'''
+
+- Aqui, Livro.livros se refere à lista de instâncias da classe Livro que você definiu anteriormente com Livro.livros = [livro1, livro2, livro3]. 
+  O Python sabe disso porque Livro.livros é acessado dentro do escopo da classe Livro.
+
+A compreensão de lista itera sobre cada livro em Livro.livros. Para cada livro, ele verifica se o _ano_publicacao do livro é igual ao ano fornecido e se o livro está disponível (_disponivel é True). 
+Se ambas as condições forem verdadeiras, o livro é adicionado à lista livros_disponiveis.
