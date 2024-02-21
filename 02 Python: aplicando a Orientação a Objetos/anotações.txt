@@ -443,4 +443,30 @@ class Contador:
       e um método __str__ para fornecer uma representação em string da instância.
 
 -----------------------------------------------------------------
+Referências
 
+1. Documentação oficial do Python (gratuito, português, texto)
+https://docs.python.org/pt-br/3/
+
+- Fonte oficial de informações sobre a linguagem Python. 
+  Aqui você encontra informações sobre os conceitos relacionados ao desenvolvimento
+  da linguagem, tutoriais, referências, informações de atualizações, boas práticas e exemplos.
+
+2. Artigo sobre classes com Python (gratuito, português, texto)
+https://www.alura.com.br/artigos/python-poo-engenharia-dados?_gl=1*vvj2vu*_ga*MTU3MDUwMjM4MS4xNzA0Nzk2MDAw*_ga_1EPWSW3PCS*MTcwODQ4MjA4Mi43MS4xLjE3MDg0ODI3NjcuMC4wLjA.*_fplc*VTRSSnlFWVRLVkhNUHBYbU1lQnYlMkZvNGxxN1ZFWDg4MEElMkZkekdsQUQ0a2s1VkFXM09WWDNETW4yd0tqQXhXWlR6MGRsR0MwV01YdGUlMkJKUU5yeHBKT04wMUpPYmlyeVlzTEkwMTVYaW9ROEcyUHd1biUyRkkyWGYxeDFIb0pPR0ElM0QlM0Q.
+
+- Mais sobre a Programação Orientada a Objetos através de exemplos de código em Python 
+  explorando as características desse conceito.
+
+3. W3S de Python (gratuito, inglês, texto)
+https://www.w3schools.com/python/
+
+- Recurso educacional online que fornece tutoriais, referências e exemplos práticos para
+  aprender Python, uma linguagem de programação de alto nível.
+
+4. Documentação oficial do Python sobre Classes (gratuito, inglês, texto)
+https://docs.python.org/3/tutorial/classes.html
+
+- Documentação oficial do Python 3, especificamente para a seção do tutorial que aborda
+  o conceito de classes em Python. A documentação oficial do Python é mantida pela Python
+  Software Foundation e é uma fonte autoritativa de informações sobre a linguagem de programação Python.
